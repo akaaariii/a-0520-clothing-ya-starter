@@ -1,21 +1,16 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Clothing-ya",
+  "name": "Clothing-ya Sample",
   "icons": [
     {
-      "src": "favicon.ico",
+      "src": "logo-clothing-ya.png",
       "sizes": "64x64 32x32 24x24 16x16",
       "type": "image/x-icon"
     },
     {
-      "src": "logo192.png",
+      "src": "logo-clothing-ya.png",
       "type": "image/png",
-      "sizes": "192x192"
-    },
-    {
-      "src": "logo512.png",
-      "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "64x64"
     }
   ],
   "start_url": ".",
