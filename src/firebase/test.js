@@ -12,4 +12,4 @@ const item = firestore
 //item === { name: "leather jacket" }
 
 firestore.doc('/users/d8JKzFlK9DhxgEn5xHM7/cartItems/vswnCtTvX4y9DYE5lCmr') //{ name: "leather jacket" }
-firestore.collection('/users/d8JKzFlK9DhxgEn5xHM7/cartItems'); // { name: "leather jacket", name: "blue hat" }
+firestore.collection('/users/d8JKzFlK9DhxgEn5xHM7/cartItems'); // { [{name: "leather jacket"}], [{name: "blue hat"}] }
