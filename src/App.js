@@ -1,3 +1,7 @@
+// git clone <url> -b <branch name>
+// git clone https://github.com/andasan/a-0520-clothing-ya-starter.git -b develop
+
+
 import React, {useState, useEffect} from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 

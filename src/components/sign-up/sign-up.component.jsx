@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import FormInput from "../form-input/form-input.component";
 import CustomButton from "../custom-button/custom-button.component";
 
+import { auth, createUserProfileDocument } from "../../firebase/firebase.util";
+
 import "./sign-up.styles.scss";
 
 const SignUp = () => {
@@ -13,8 +15,26 @@ const SignUp = () => {
     confirmPassword: "",
   });
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async(event) => {
     event.preventDefault();
+
+    const { displayName, email, password, confirmPassword} = userState;
+
+    if(password !== confirmPassword){
+      alert("Passwords don't match");
+      return;
+    }
+
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(email,password);
+      
+      await createUserProfileDocument(user, {displayName});
+
+    }catch(error){
+      console.error(error.message);
+    }
+
+
   };
 
   const handleChange = (event) => {
