@@ -1,7 +1,8 @@
 import { addItemToCart } from './cart.util';
 
 const INITIAL_STATE = {
-    cartItems: []
+    cartItems: [],
+    hidden: true
 }
 
 const cartReducer = (state = INITIAL_STATE, action) => {
@@ -11,6 +12,11 @@ const cartReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 cartItems: addItemToCart(state.cartItems, action.payload)
                 // cartItems: [...state.cartItems, action.payload]
+            }
+        case 'TOGGLE_CART_HIDDEN':
+            return{
+                ...state,
+                hidden: !state.hidden
             }
         default:
             return state

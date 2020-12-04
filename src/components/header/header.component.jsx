@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 
 // import { ReactComponent as Logo } from '../../assets/logo.png'; //act as component, works for svg
 import Logo from '../../assets/logo.png';
-import {auth} from '../../firebase/firebase.util'
+import {auth} from '../../firebase/firebase.util';
+import CartIcon from '../cart-icon/cart-icon.component';
+import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
 import './header.styles.scss';
 
@@ -26,6 +28,10 @@ const Header = ({ currentUser }) => (
             SIGN IN
           </Link>
         )
+      }
+      <CartIcon />
+      {
+        <CartDropdown />
       }
     </div>
   </div>
