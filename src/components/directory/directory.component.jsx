@@ -14,33 +14,33 @@ class Directory extends React.Component {
           title: 'hats',
           imageUrl: 'https://images.unsplash.com/photo-1534215754734-18e55d13e346?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=1248&q=80',
           id: 1,
-          linkUrl: 'hats'
+          linkUrl: 'shop/hats'
         },
         {
           title: 'jackets',
           imageUrl: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2700&q=80',
           id: 2,
-          linkUrl: ''
+          linkUrl: 'shop/jackets'
         },
         {
           title: 'sneakers',
           imageUrl: 'https://images.unsplash.com/photo-1502238074616-a146498d5158?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=2850&q=80',
           id: 3,
-          linkUrl: ''
+          linkUrl: 'shop/sneakers'
         },
         {
           title: 'womens',
           imageUrl: 'https://images.unsplash.com/photo-1582516465792-cbc64224aa88?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1268&q=80',
           size: 'large',
           id: 4,
-          linkUrl: ''
+          linkUrl: 'shop/womens'
         },
         {
           title: 'mens',
           imageUrl: 'https://images.unsplash.com/photo-1563122870-6b0b48a0af09?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1268&q=80',
           size: 'large',
           id: 5,
-          linkUrl: ''
+          linkUrl: 'shop/mens'
         }
       ]
     };
