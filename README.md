@@ -6,7 +6,7 @@ A starter react project for instructional/educational purposes only
 - Obtain a couple of things first: Firebase config and Stripe publishable key
 - Use this format on your .env file and paste the values after the '=' symbol without spaces
 
-> REACT_APP_apiKey=
+> REACT_APP_apiKey= \n
 > REACT_APP_authDomain=
 > REACT_APP_databaseURL=
 > REACT_APP_projectId=
