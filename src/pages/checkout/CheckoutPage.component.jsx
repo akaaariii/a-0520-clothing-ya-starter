@@ -4,8 +4,15 @@ import {connect} from 'react-redux';
 import './CheckoutPage.styles.scss';
 
 import CheckoutItem from '../../components/checkout-item/checkout-item.component';
+import StripCheckoutButton from '../../components/stripe-button/stripe-button.component';
 
-const CheckoutPage = ({cartItems}) => (
+const CheckoutPage = ({cartItems}) => {
+    
+    const cartTotalPrice = cartItems.reduce((acc, cartItem)=> {
+        return acc + cartItem.quantity * cartItem.price
+    }, 0);
+
+    return(
     <div className="checkout-page">
         <div className="checkout-header">
             <div className="header-block">
@@ -31,11 +38,15 @@ const CheckoutPage = ({cartItems}) => (
             ))
         }
 
-        <div className="total">TOTAL: </div>
+        <div className="total">TOTAL: ${cartTotalPrice} </div>
+        <div className="warning">
+            *Use the following test credit card for payment*
+            <br />
+            4242 4242 4242 4242 - Exp: 01/22 - CVC: 123
+        </div>
+        <StripCheckoutButton price={cartTotalPrice} />
     </div>
-
-
-);
+)};
 
 const mapStateToProps = ({ cart: {cartItems }}) => ({
     cartItems: cartItems
