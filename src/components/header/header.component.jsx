@@ -8,34 +8,36 @@ import {auth} from '../../firebase/firebase.util';
 import CartIcon from '../cart-icon/cart-icon.component';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 
-import './header.styles.scss';
+// import './header.styles.scss';
+
+import { HeaderContainer, LogoContainer, OptionContainer, OptionLink } from './header.styles';
 
 const Header = ({ currentUser, hidden }) => (
-  <div className='header'>
-    <Link className='logo-container' to='/'>
+  <HeaderContainer>
+    <LogoContainer to='/'>
       <img src={Logo} alt='logo'  className='logo' />
-    </Link>
-    <div className='options'>
-      <Link className='option' to='/shop'>
+    </LogoContainer>
+    <OptionContainer>
+      <OptionLink to='/shop'>
         SHOP
-      </Link>
+      </OptionLink>
       {
         currentUser ? (
-          <div className='option' onClick={() => auth.signOut()}>
+          <OptionLink as="div" onClick={() => auth.signOut()}>
             SIGN OUT
-          </div>
+          </OptionLink>
         ): (
-          <Link className='option' to='/signin'>
+          <OptionLink to='/signin'>
             SIGN IN
-          </Link>
+          </OptionLink>
         )
       }
       <CartIcon />
       {
         hidden ? null : <CartDropdown />
       }
-    </div>
-  </div>
+    </OptionContainer>
+  </HeaderContainer>
 );
 
 const mapStateToProps = ({ cart : { hidden }}) => ({
