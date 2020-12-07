@@ -29,7 +29,6 @@ function App({ setCurrentUser, currentUser }) {
         const userRef = await createUserProfileDocument(user);
 
         userRef.onSnapshot(snapShot => {
-          console.log("current-user-from-appjs: ", snapShot.data());
           setCurrentUser({
             id: snapShot.id,
             ...snapShot.data()
