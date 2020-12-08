@@ -6,9 +6,15 @@ import "./CollectionPage.styles.scss";
 import CollectionItem from "../../components/collection-item/collection-item.component";
 
 const CollectionPage = ({ collections, match }) => {
+
+  if(collections){
+    return <h1>Loading....</h1>
+  }
+  
   const filteredCollections = collections.filter(
     (coll) => coll.routeName === match.params.collectionId
   );
+
   const { title, items } = filteredCollections[0];
   
   return (
