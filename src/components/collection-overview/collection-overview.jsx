@@ -1,18 +1,19 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import './collection-overview.styles.scss';
+// import './collection-overview.styles.scss';
+import { CollectionsOverviewContainer } from "./collection-overview.styles";
 
 import CollectionPreview from '../collection-preview/collection-preview';
 
 const CollectionOverview = ({collections}) => (
-    <div className="collection-overview">
+    <CollectionsOverviewContainer>
         {
             collections && collections.map(({id, ...otherProps}) => (
                 <CollectionPreview key={id} {...otherProps} />
             ))
         }
-    </div>
+    </CollectionsOverviewContainer>
 )
 
 const mapStateToProps = (state) => ({

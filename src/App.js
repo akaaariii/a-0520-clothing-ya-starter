@@ -12,10 +12,10 @@ import ShopPage from './pages/shop/shop.component';
 import SignInAndSignUpPage from './pages/sign-in-and-sign-up/sign-in-and-sign-up.component';
 import CheckoutPage from './pages/checkout/CheckoutPage.component';
 import Header from './components/header/header.component';
-import { auth, createUserProfileDocument } from './firebase/firebase.util';
+import { auth, createUserProfileDocument, addCollectionAndDocuments } from './firebase/firebase.util';
 import { setCurrentUser } from './redux/user/user.action';
 
-function App({ setCurrentUser, currentUser }) {
+function App({ setCurrentUser, currentUser, collectionArray }) {
   // const [currentUser, setCurrentUser] = useState(null);
 
   //subscription stage
@@ -36,6 +36,12 @@ function App({ setCurrentUser, currentUser }) {
         });
       }else{
         setCurrentUser(user);
+
+        //temp method to inject shop data to firestore
+        // addCollectionAndDocuments('collections', collectionArray.map(({ title, items}) => ({
+        //   title,
+        //   items
+        // })));
       }
     });
     
@@ -62,7 +68,8 @@ function App({ setCurrentUser, currentUser }) {
 }
 
 const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser
+  currentUser: state.user.currentUser,
+  collectionArray: state.shop.collections
 })
 
 const mapDispatchToProps = (dispatch) => ({

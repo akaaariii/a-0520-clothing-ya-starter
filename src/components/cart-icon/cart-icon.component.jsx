@@ -1,9 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import './cart-icon.styles.scss';
+// import './cart-icon.styles.scss';
+import {
+    CartContainer,
+    ShoppingIcon,
+    ItemCountContainer,
+  } from "./cart-icon.styles";
 
-import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
+// import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
 import { toggleCartHidden } from '../../redux/cart/cart.action'
 
 const CartIcon = ({ cartItems, toggleCartHidden }) => {
@@ -13,10 +18,10 @@ const CartIcon = ({ cartItems, toggleCartHidden }) => {
     }, 0);
 
     return(
-    <div className="cart-icon">
-        <ShoppingIcon className="shopping-icon" onClick={toggleCartHidden} />
-        <span className="item-count">{cartItemCounter}</span>
-    </div>
+    <CartContainer onClick={toggleCartHidden} >
+        <ShoppingIcon />
+        <ItemCountContainer>{cartItemCounter}</ItemCountContainer>
+    </CartContainer>
 )};
 
 const mapStateToProps = state => ({
