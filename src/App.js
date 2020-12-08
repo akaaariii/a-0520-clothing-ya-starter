@@ -4,6 +4,7 @@
 import React, {useEffect} from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from "react-redux";
+import { createStructuredSelector } from 'reselect';
 
 import './App.css';
 
@@ -14,10 +15,11 @@ import CheckoutPage from './pages/checkout/CheckoutPage.component';
 import Header from './components/header/header.component';
 import { auth, createUserProfileDocument, addCollectionAndDocuments } from './firebase/firebase.util';
 import { setCurrentUser } from './redux/user/user.action';
+import { selectCurrentUser } from './redux/user/user.selector';
 
 function App({ setCurrentUser, currentUser, collectionArray }) {
   // const [currentUser, setCurrentUser] = useState(null);
-
+  console.log("trigger");
   //subscription stage
   useEffect(() => {
     let unsubscribeFromAuth = null;
@@ -67,9 +69,12 @@ function App({ setCurrentUser, currentUser, collectionArray }) {
   );
 }
 
-const mapStateToProps = (state) => ({
-  currentUser: state.user.currentUser,
-  collectionArray: state.shop.collections
+// const mapStateToProps = (state) => ({
+//   currentUser: state.user.currentUser,
+//   collectionArray: state.shop.collections
+// })
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
 })
 
 const mapDispatchToProps = (dispatch) => ({
