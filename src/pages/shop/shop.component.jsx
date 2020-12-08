@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -6,8 +6,13 @@ import CollectionOverview from "../../components/collection-overview/collection-
 import CollectionPage from "../collections/CollectionPage";
 import { firestore, convertCollectionSnapShotToMap } from "../../firebase/firebase.util";
 import {updateCollection} from "../../redux/shop/shop.action";
+import WithSpinner from "../../components/withSpinner/with-spinner.component";
+
+const CollectionsOverviewWithSpinner = WithSpinner(CollectionOverview);
+const CollectionPageWithSpinner = WithSpinner(CollectionPage);
 
 const ShopPage = ({match, updateCollection}) => {
+  const [fetched, setFetched] = useState(true);
 
   useEffect(() => {
 
@@ -19,6 +24,7 @@ const ShopPage = ({match, updateCollection}) => {
       const collectionsMap = convertCollectionSnapShotToMap(snapshot);
       //dispatch the collectionsmap
       updateCollection(collectionsMap);
+      setFetched(false);
     });
 
     return () => {
@@ -33,11 +39,15 @@ const ShopPage = ({match, updateCollection}) => {
       <Route
         exact
         path={`${match.path}`}
-        component={CollectionOverview}
+        render={(props) => 
+          (<CollectionsOverviewWithSpinner isLoading={fetched} {...props} />)
+        }
       />
       <Route
         path={`${match.path}/:collectionId`}
-        component={CollectionPage}
+        render={(props) =>
+          (<CollectionPageWithSpinner isLoading={fetched} {...props} />)
+        }
       />
     </div>
   );

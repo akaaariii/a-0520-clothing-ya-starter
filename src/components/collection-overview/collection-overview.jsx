@@ -6,18 +6,28 @@ import { CollectionsOverviewContainer } from "./collection-overview.styles";
 
 import CollectionPreview from '../collection-preview/collection-preview';
 
-const CollectionOverview = ({collections}) => (
+const CollectionOverview = ({collections}) => {
+
+    console.log("collections: ", collections);
+
+    return(
     <CollectionsOverviewContainer>
         {
-            collections && collections.map(({id, ...otherProps}) => (
+            collections.map(({id, ...otherProps}) => (
                 <CollectionPreview key={id} {...otherProps} />
             ))
         }
     </CollectionsOverviewContainer>
-)
+)}
 
-const mapStateToProps = (state) => ({
-    collections: state.shop.collections
+// const mapStateToProps = (state) => ({
+//     collections: state.shop.collections 
+// })
+
+const mapStateToProps = ({ shop: { collections }}) => ({
+    collections: collections ? Object.keys(collections).map(key => collections[key] ) : []
 })
+
+
 
 export default connect(mapStateToProps)(CollectionOverview);

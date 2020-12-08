@@ -1,16 +1,18 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import "./CollectionPage.styles.scss";
+// import "./CollectionPage.styles.scss";
+import {
+  CollectionPageContainer,
+  CollectionTitle,
+  CollectionItemsContainer,
+} from "./CollectionPage.styles";
 
 import CollectionItem from "../../components/collection-item/collection-item.component";
 
 const CollectionPage = ({ collections, match }) => {
 
-  if(collections){
-    return <h1>Loading....</h1>
-  }
-  
+  console.log(collections);
   const filteredCollections = collections.filter(
     (coll) => coll.routeName === match.params.collectionId
   );
@@ -18,13 +20,13 @@ const CollectionPage = ({ collections, match }) => {
   const { title, items } = filteredCollections[0];
   
   return (
-    <div className="collection-page">
-      <h2 className="title">{title}</h2>
-      <div className="items">
+    <CollectionPageContainer>
+      <CollectionTitle>{title}</CollectionTitle>
+      <CollectionItemsContainer>
         {items &&
           items.map((item) => <CollectionItem key={item.id} item={item} />)}
-      </div>
-    </div>
+      </CollectionItemsContainer>
+    </CollectionPageContainer>
   );
 };
 
